@@ -5,32 +5,51 @@
 }
 
 body{
-    background-color: rgb(210, 207, 207);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     min-height: 100vh;
+    width: 800px;
+    margin: auto;
+    background-color: #D9D5C5;
 }
 
-main{
-    background-color: rgb(145, 145, 145);
-    padding: 2vh;
-    border: 2px solid black;
+button {
+    height: 10%;
 }
 
 header {
-    padding: 2vh 0 7vh;
-    margin: 0;
+    padding: 2vh;
+    margin-bottom: 2vh;
     line-height: 1.5;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: #BF4226;
+    width: 100%;
 }
 
 header > h2 {
     font-weight: 500;
 }
 
+main {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 1px dashed black;
+    padding: 2vh;
+}
+
 .resultado {
-    margin: 2vh;
-    padding: 2vh 0 2vh;
+    margin: 3vh;
+    padding: 4vh;
     line-height: 1.7;
+    color: white;
+    width: 100%;
+}
+
+canva {
+    display: none;
 }

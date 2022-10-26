@@ -19,8 +19,8 @@ dados = [
     }
 ]
 
-let secao_input = document.getElementById('secao_input')
 let zona_input = document.getElementById('zona_input')
+let secao_input = document.getElementById('secao_input')
 
 let botao = document.getElementById('buscar')
 let resposta = document.querySelector('output')
@@ -35,39 +35,66 @@ let votos = document.querySelector('.votos')
 
 let body = document.querySelector('body')
 
-buscar.addEventListener('click', validar(secao_input, zona_input))
+botao.addEventListener('click', validar)
 
-function validar(v1, v2) {
 
-    valor = v1.value.trim();
-    valor2 = v2.value.trim();
+let votos_candidatos = []
+let candidatos = []
+
+function validar() {
+    valor = zona_input.value.trim();
+    valor2 = secao_input.value.trim();
 
     for (let dado of dados) {
         if (valor == dado.zona && valor2 == dado.secao) {
-            voto_grafico = {}
-            voto_grafico = {
-                'Lula (PT)': dado.Lula,
-                'Bolsonaro (PL)': dado.Bolsonaro
-            }
+            votos_candidatos = []
+            votos_candidatos.push(dado.Lula, dado.Bolsonaro)
+            candidatos = ['Lula (PT)', 'Bolsonaro (PL)']
+
+            resultado.style.backgroundColor = "#0D0D0D"
+            votos.style.paddingBottom = '1vh'
             resultado.style.border = "1px solid black"
-            resultado.style.backgroundColor = "rgb(198, 198, 198)"
+
             estado.innerHTML = "<p><b>Estado:</b> " + dado.estado + "</p>"
             cidade.innerHTML = "<p><b>Cidade:</b> " + dado.cidade + "</p>"
             local.innerHTML = "<p><b>Local de votação:</b> " + dado.local + "</p>"
             zona_secao.innerHTML = "<p><b>Zona:</b> " + dado.zona + "<b>   Seção:</b> " + dado.secao + "</p>"
             if (dado.Bolsonaro > dado.Lula) {
-                body.style.backgroundColor = "#30306D"
                 votos.innerHTML = "<h3>Bolsonaro ganhou com " + dado.Bolsonaro + " votos. <br>" + "Lula teve " + dado.Lula + " votos.<h3>"
             }
             if (dado.Bolsonaro < dado.Lula) {
-                body.style.backgroundColor = "#C0122D"
                 votos.innerHTML = "<h3>Lula ganhou com " + dado.Lula + " votos. Bolsonaro teve " + dado.Bolsonaro + " votos.<h3>"
             }
             if (dado.Bolsonaro == dado.Lula) {
-                body.style.backgroundColor = "rgb(210, 207, 207)"
                 votos.innerHTML = "<h3>Os dois candidatos empataram com " + dado.Lula + " votos.<h3>"
             }
-        
         }
-    }
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: candidatos,
+                datasets: [{
+                    label: '# of Votes',
+                    data: votos_candidatos,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });}            
+    
 }
