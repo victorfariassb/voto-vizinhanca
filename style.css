@@ -17,18 +17,20 @@ main{
     background-color: rgb(145, 145, 145);
     padding: 2vh;
     border: 2px solid black;
-
 }
 
 header {
     padding: 2vh 0 7vh;
     margin: 0;
+    line-height: 1.5;
 }
 
-header > h3 {
+header > h2 {
     font-weight: 500;
 }
 
 .resultado {
-    padding-top: 4vh;
+    margin: 2vh;
+    padding: 2vh 0 2vh;
+    line-height: 1.7;
 }
