@@ -13,7 +13,7 @@ body{
     min-height: 100vh;
     width: 800px;
     margin: auto;
-    background-color: #D9D5C5;
+    background-color: #DADADA;
 }
 
 button {
@@ -21,11 +21,9 @@ button {
 }
 
 header {
-    padding: 2vh;
+    padding: vh;
     margin-bottom: 2vh;
     line-height: 1.5;
-    border: 2px solid rgb(0, 0, 0);
-    background-color: #BF4226;
     width: 100%;
 }
 
@@ -38,7 +36,6 @@ main {
     width: 100%;
     flex-direction: row;
     justify-content: center;
-    border-bottom: 1px dashed black;
     padding: 2vh;
 }
 
@@ -46,10 +43,8 @@ main {
     margin: 3vh;
     padding: 4vh;
     line-height: 1.7;
-    color: white;
+    color: black;
     width: 100%;
+    background-color: #DADADA;
 }
 
-canva {
-    display: none;
-}
