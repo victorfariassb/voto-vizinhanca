@@ -1,4 +1,4 @@
-dados = [
+let dados = [
     {
         "estado": "Rio de Janeiro",
         "cidade": "Rio de Janeiro",
@@ -38,19 +38,12 @@ let body = document.querySelector('body')
 botao.addEventListener('click', validar)
 
 
-let votos_candidatos = []
-let candidatos = []
-
 function validar() {
-    valor = zona_input.value.trim();
-    valor2 = secao_input.value.trim();
+    let valor = Number(zona_input.value.trim());
+    let valor2 = Number(secao_input.value.trim());
 
     for (let dado of dados) {
         if (valor == dado.zona && valor2 == dado.secao) {
-            votos_candidatos = []
-            votos_candidatos.push(dado.Lula, dado.Bolsonaro)
-            candidatos = ['Lula (PT)', 'Bolsonaro (PL)']
-
             resultado.style.backgroundColor = "#0D0D0D"
             votos.style.paddingBottom = '1vh'
             resultado.style.border = "1px solid black"
@@ -60,41 +53,28 @@ function validar() {
             local.innerHTML = "<p><b>Local de votação:</b> " + dado.local + "</p>"
             zona_secao.innerHTML = "<p><b>Zona:</b> " + dado.zona + "<b>   Seção:</b> " + dado.secao + "</p>"
             if (dado.Bolsonaro > dado.Lula) {
-                votos.innerHTML = "<h3>Bolsonaro ganhou com " + dado.Bolsonaro + " votos. <br>" + "Lula teve " + dado.Lula + " votos.<h3>"
+                votos.style.color = 'white'
+                votos.innerHTML = "<h3>Bolsonaro ganhou com " + dado.Bolsonaro + " votos. Lula teve " + dado.Lula + " votos.<h3>"
             }
-            if (dado.Bolsonaro < dado.Lula) {
+            else if (dado.Bolsonaro < dado.Lula) {
+                votos.style.color = 'white'
                 votos.innerHTML = "<h3>Lula ganhou com " + dado.Lula + " votos. Bolsonaro teve " + dado.Bolsonaro + " votos.<h3>"
             }
-            if (dado.Bolsonaro == dado.Lula) {
+            else if (dado.Bolsonaro == dado.Lula) {
+                votos.style.color = 'white'
                 votos.innerHTML = "<h3>Os dois candidatos empataram com " + dado.Lula + " votos.<h3>"
             }
+            break
         }
-        const ctx = document.getElementById('myChart').getContext('2d');
-        const myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: candidatos,
-                datasets: [{
-                    label: '# of Votes',
-                    data: votos_candidatos,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });}            
-    
+        else if (valor != dado.zona || valor2 != dado.secao) {
+            votos.style.color = 'black'
+            resultado.style.backgroundColor = "#D9D5C5"
+            resultado.style.border = "none"
+            votos.innerHTML = "<h3>Local não identificado. Tente novamente</h3>"
+            estado.innerHTML = ""
+            cidade.innerHTML = ""
+            local.innerHTML = ""
+            zona_secao.innerHTML = ""
+        }
+    }
 }
