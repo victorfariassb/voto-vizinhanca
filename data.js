@@ -75,6 +75,27 @@ function validar() {
                 grafico.style.display = 'none'
             }
             }
+<<<<<<< Updated upstream
+=======
+            grafico.style.display = 'block'
+            grafico.style.height = '200px'
+            grafico.style.width = '400px'
+            myChart.data.datasets[0].data[0] = votos_candidadtos[0];
+            myChart.data.datasets[1].data[0] = votos_candidadtos[1];
+            myChart.update();
+            break
+        }
+        else if (valor != dado.zona || valor2 != dado.secao) {
+            votos.style.color = 'black'
+            resultado.style.border = "none"
+            votos.innerHTML = "<h3>Local não identificado. Tente novamente</h3>"
+            estado.innerHTML = ""
+            cidade.innerHTML = ""
+            local.innerHTML = ""
+            zona_secao.innerHTML = ""
+            grafico.style.display = 'none'
+
+>>>>>>> Stashed changes
         }
     }
 
