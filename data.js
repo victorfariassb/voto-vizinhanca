@@ -56,36 +56,15 @@ function validar() {
                     votos.style.color = 'black'
                     votos.innerHTML = "<h3>Os dois candidatos empataram com " + dado.Lula + " votos.<h3>"
                 }
-                grafico.style.display = 'block'
-                grafico.style.height = '250px'
-                grafico.style.width = '500px'
-                myChart.data.datasets[0].data[0] = votos_candidadtos[0];
-                myChart.data.datasets[1].data[0] = votos_candidadtos[1];
-                myChart.update();
-                break
-            }
-            else if (valor != dado.zona || valor2 != dado.secao) {
-                votos.style.color = 'black'
-                resultado.style.border = "none"
-                votos.innerHTML = "<h3>Local não identificado. Tente novamente</h3>"
-                estado.innerHTML = ""
-                cidade.innerHTML = ""
-                local.innerHTML = ""
-                zona_secao.innerHTML = ""
-                grafico.style.display = 'none'
-            }
-            }
-<<<<<<< Updated upstream
-=======
             grafico.style.display = 'block'
-            grafico.style.height = '200px'
-            grafico.style.width = '400px'
+            grafico.style.height = '100px'
+            grafico.style.width = '300px'
             myChart.data.datasets[0].data[0] = votos_candidadtos[0];
             myChart.data.datasets[1].data[0] = votos_candidadtos[1];
             myChart.update();
             break
         }
-        else if (valor != dado.zona || valor2 != dado.secao) {
+        if (valor != dado.zona || valor2 != dado.secao) {
             votos.style.color = 'black'
             resultado.style.border = "none"
             votos.innerHTML = "<h3>Local não identificado. Tente novamente</h3>"
@@ -94,10 +73,10 @@ function validar() {
             local.innerHTML = ""
             zona_secao.innerHTML = ""
             grafico.style.display = 'none'
-
->>>>>>> Stashed changes
         }
     }
+}
+}
 
 
 const data = {
