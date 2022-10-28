@@ -7,6 +7,7 @@ fetch("votos_secao.json")
 
 let zona_input = document.getElementById('zona_input')
 let secao_input = document.getElementById('secao_input')
+let uf_input = document.getElementById('uf_input')
 
 let botao = document.getElementById('buscar')
 let resposta = document.querySelector('output')
@@ -27,13 +28,16 @@ let votos_candidadtos = []
 
 botao.addEventListener('click', validar)
 
+console.log(uf_input)
+
 function validar() {
     let valor = Number(zona_input.value.trim());
     let valor2 = Number(secao_input.value.trim());
-
+    let valor3 = uf_input.value
+    console.log(valor3)
     for (let local of dados){ 
         for (let dado of local) {
-            if (valor == dado.zona && valor2 == dado.secao) {
+            if (valor == dado.zona && valor2 == dado.secao && valor3 == dado.estado) {
                 check += 1
                 votos_candidadtos = []
                 votos_candidadtos.push(dado.Lula, dado.Bolsonaro)

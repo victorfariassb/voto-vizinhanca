@@ -52,6 +52,10 @@ canvas {
     margin-top: 2vh;
 }
 
+input {
+    width: 20%;
+}
+
 
 @media (max-width: 700px){
     body{ width: 90%;
