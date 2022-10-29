@@ -34,7 +34,6 @@ function validar() {
     let valor = Number(zona_input.value.trim());
     let valor2 = Number(secao_input.value.trim());
     let valor3 = uf_input.value
-    console.log(valor3)
     for (let local of dados){ 
         for (let dado of local) {
             if (valor == dado.zona && valor2 == dado.secao && valor3 == dado.estado) {
